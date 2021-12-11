@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import SetupBoard from "./components/SetupBoard";
+import './Styled/SetupBoard.css'
 
 function App() {
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message , type) => {
+    setAlert({
+      msg:message,
+      type:type
+    })
+    setTimeout(() => {
+      setAlert(null)
+    }, 3000);
+  }
   return (
+   
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SetupBoard showAlert={showAlert} alert={alert}/>
     </div>
   );
 }
